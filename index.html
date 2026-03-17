@@ -30,23 +30,23 @@
 <body class="bg-color min-h-screen">
 
     <header>
-        <section class="container mx-auto w-10/12 pt-[60px] mb-[30px]">
+        <section class="heading-container mx-auto w-10/12 pt-[60px] mb-[30px]">
             <h1 class="color-black font-bold text-[32px] mb-5">Job Application Tracker</h1>
 
             <div class="mb-[30px] grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="shadow bg-white p-5 rounded-lg">
                     <p class="text-[14px]">Total</p>
-                    <h3 class="color-black text-2xl font-bold">8</h3>
+                    <h3 id="total-jobs" class="color-black text-2xl font-bold">8</h3>
                 </div>
 
                 <div class="shadow bg-white p-5 rounded-lg">
                     <p class="text-[14px]">Interview</p>
-                    <h3 class="color-green text-2xl font-bold">0</h3>
+                    <h3 id="interview-jobs" class="color-green text-2xl font-bold">0</h3>
                 </div>
 
                 <div class="shadow bg-white p-5 rounded-lg">
                     <p class="text-[14px]">Rejected</p>
-                    <h3 class="color-red text-2xl font-bold">0</h3>
+                    <h3 id="rejected-jobs" class="color-red text-2xl font-bold">0</h3>
                 </div>
             </div>
             <span class="text-[#E6E7E9]">
@@ -59,14 +59,14 @@
     <main class="w-10/12 mx-auto">
         <div class="flex justify-between items-center">
             <h2 class="color-black text-[20px] font-semibold mb-6">Available Jobs</h2>
-            <p class="text-[#323B49]/70">8 jobs</p>
+            <p id="available-jobs" class="text-[#323B49]/70">8 jobs</p>
         </div>
         <section>
 
             <div class="flex justify-start items-center text-[12px] gap-2 mb-4">
-                <button class="bg-[#3B82F6] text-white px-8 py-2.5 shadow rounded-sm">All</button>
-                <button class="text-[#64748B] px-3.5 py-2.5 shadow rounded-sm">Interview</button>
-                <button class="text-[#64748B] px-3.5 py-2.5 shadow rounded-sm">Rejected</button>
+                <button class="type-btn btn-active px-8 py-2.5 shadow rounded-sm cursor-pointer" onclick="toggleBtn('all', this)">All</button>
+                <button class="type-btn btn-nonActive px-3.5 py-2.5 shadow rounded-sm cursor-pointer" onclick="toggleBtn('interview', this)">Interview</button>
+                <button class="type-btn btn-nonActive px-3.5 py-2.5 shadow rounded-sm cursor-pointer" onclick="toggleBtn('rejected', this)">Rejected</button>
             </div>
 
             <div class="p-6 shadow bg-white">
@@ -100,7 +100,8 @@
             </div>
         </section>
     </main>
-
+<!-- script -->
+ <script src="./scripts/script.js"></script>
 </body>
 
 </html>

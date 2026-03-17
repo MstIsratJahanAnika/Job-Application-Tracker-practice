@@ -1,7 +1,4 @@
 
-@import "tailwindcss";
-
-
 *{
   font-family: "Geist", sans-serif;
   font-optical-sizing: auto;
@@ -21,4 +18,13 @@
 
 .color-black{
     color: #002C5C;
+}
+
+.btn-active{
+    background-color: #3B82F6;
+    color: white
+}
+
+.btn-nonActive{
+    color: #64748B;
 }
