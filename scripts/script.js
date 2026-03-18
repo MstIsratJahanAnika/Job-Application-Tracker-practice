@@ -57,8 +57,8 @@ function renderJobs() {
     // selected job er moddhe job jemn hobe 
     for (let job of selectedJob) {
         const jobCard = document.createElement('div');
-        jobCard.className = "space-y-5";
-        jobCard.innerHTML = `class="space-y-5">
+        jobCard.className = "space-y-5 p-6 shadow bg-white mb-[16px]";
+        jobCard.innerHTML = `
                     <div class="flex justify-between items-center">
                         <div class="space-y-1">
                             <h4 class="text-[18px] font-semibold">${job.name}</h4>
@@ -74,10 +74,6 @@ function renderJobs() {
                     </div>
 
                     <div class="space-y-2">
-
-                        <div class="py-2 px-3 bg-[#EEF4FF] inline-block">
-                            <p>NOT APPLIED</p>
-                        </div>
 
                         ${job.status === 'all' ? `<div class="py-2 px-3 bg-[#EEF4FF] inline-block uppercase">not applied</div>` : job.status === 'interview' ? `<div class="border-green-500 text-green-500 bg-green-200 uppercase">interview</div>` : `<div class="border-red-500 text-red-500 bg-red-200 uppercase">rejected</div>`}
 
