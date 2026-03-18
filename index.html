@@ -21,7 +21,9 @@
         rel="stylesheet">
 
     <!-- font awesome -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- link css -->
     <link rel="stylesheet" href="./styles/style.css">
@@ -64,44 +66,66 @@
         <section>
 
             <div class="flex justify-start items-center text-[12px] gap-2 mb-4">
-                <button class="type-btn btn-active px-8 py-2.5 shadow rounded-sm cursor-pointer" onclick="toggleBtn('all', this)">All</button>
-                <button class="type-btn btn-nonActive px-3.5 py-2.5 shadow rounded-sm cursor-pointer" onclick="toggleBtn('interview', this)">Interview</button>
-                <button class="type-btn btn-nonActive px-3.5 py-2.5 shadow rounded-sm cursor-pointer" onclick="toggleBtn('rejected', this)">Rejected</button>
+                <button class="type-btn btn-active px-8 py-2.5 shadow rounded-sm cursor-pointer"
+                    onclick="toggleBtn('all', this)">All</button>
+                <button class="type-btn btn-nonActive px-3.5 py-2.5 shadow rounded-sm cursor-pointer"
+                    onclick="toggleBtn('interview', this)">Interview</button>
+                <button class="type-btn btn-nonActive px-3.5 py-2.5 shadow rounded-sm cursor-pointer"
+                    onclick="toggleBtn('rejected', this)">Rejected</button>
             </div>
 
             <div class="p-6 shadow bg-white">
-                <div class="space-y-5">
-                    <div class="flex justify-between items-center">
-                        <div class="space-y-1">
-                            <h4 class="text-[18px] font-semibold">Mobile First Corp</h4>
-                            <p class="text-[#64748B] text-[16px]">React Native Developer</p>
+                <div id="jobs-container">
+                     <div class="space-y-5">
+                        <div class="flex justify-between items-center">
+                            <div class="space-y-1">
+                                <h4 class="text-[18px] font-semibold">Mobile First Corp</h4>
+                                <p class="text-[#64748B] text-[16px]">React Native Developer</p>
+                            </div>
+                            <button
+                                class="text-[#64748B] bg-white rounded-full btn btn-soft shadow p-2.5 border border-[#64748B]/30"><i
+                                    class="fa-regular fa-trash-can"></i></button>
                         </div>
-                        <button class="text-[#64748B] bg-white rounded-full btn btn-soft shadow p-2.5 border border-[#64748B]/30"><i class="fa-regular fa-trash-can"></i></button>
-                    </div>
 
-                    <div class="text-[14px] text-[#64748B] space-x-2">
-                        <span>Remote</span> • <span class="ml-2">Full-time</span> • <span class="ml-2">$130,000 -
-                            $175,000</span>
-                    </div>
-
-                    <div class="space-y-2">
-                        <div class="py-2 px-3 bg-[#EEF4FF] inline-block">
-                            <p>NOT APPLIED</p>
+                        <div class="text-[14px] text-[#64748B] space-x-2">
+                            <span>Remote</span> • <span class="ml-2">Full-time</span> • <span class="ml-2">$130,000 -
+                                $175,000</span>
                         </div>
-                        <P class="text-[14px] text-[#323B49]">Build cross-platform mobile applications using React
-                            Native. Work on products used by millions of users worldwide.</P>
-                    </div>
 
-                    <div class="flex justify-start items-center gap-2">
-                        <button class="btn btn-outline btn-success">INTERVIEW</button>
-                        <button class="btn btn-outline btn-error">REJECTED</button>
+                        <div class="space-y-2">
+                            <div class="py-2 px-3 bg-[#EEF4FF] inline-block">
+                                <p>NOT APPLIED</p>
+                            </div>
+                            <P class="text-[14px] text-[#323B49]">Build cross-platform mobile applications using React
+                                Native. Work on products used by millions of users worldwide.</P>
+                        </div>
+
+                        <div class="flex justify-start items-center gap-2">
+                            <button class="btn btn-outline btn-success">INTERVIEW</button>
+                            <button class="btn btn-outline btn-error">REJECTED</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- no job section -->
+            <div id="hidden-container" class="hidden">
+                <div class="mt-2 shadow bg-white text-center py-[111px]">
+                    <div class="flex justify-center items-center pb-5">
+                        <img src="./jobs.png" alt="">
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="color-black font-semibold text-2xl">No jobs available</h3>
+                        <p class="btn-nonActive">Check back soon for new job opportunities</p>
                     </div>
                 </div>
             </div>
         </section>
+
     </main>
-<!-- script -->
- <script src="./scripts/script.js"></script>
+    <!-- script -->
+    <script src="./scripts/script.js"></script>
 </body>
 
 </html>
