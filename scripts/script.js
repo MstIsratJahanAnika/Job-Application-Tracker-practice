@@ -41,10 +41,11 @@ function renderJobs() {
     let selectedJob;
     // job filter korte hobe 
     if (currentType === "all") {
-        selectedJob = currentType;
+        selectedJob = allJobs;
+    } else {
+        // jodi all na hoy 
+        selectedJob = allJobs.filter(job => job.status == currentType);
     }
-    // jodi all na hoy 
-    selectedJob = allJobs.filter(job => job.status == currentType);
 
     // je button a click kora hobe sheita hobe current type 
     // console.log(currentType);
@@ -52,7 +53,9 @@ function renderJobs() {
     if (selectedJob.length === 0) {
         hiddenContainer.classList.remove('hidden');
     }
-    hiddenContainer.classList.add('hidden');
+    else {
+        hiddenContainer.classList.add('hidden');
+    }
 
     // selected job er moddhe job jemn hobe 
     for (let job of selectedJob) {
@@ -65,7 +68,7 @@ function renderJobs() {
                             <p class="text-[#64748B] text-[16px]">${job.post}</p>
                         </div>
                         <button
-                            class="text-[#64748B] bg-white rounded-full btn btn-soft shadow p-2.5 border border-[#64748B]/30"><i
+                            class="text-[#64748B] bg-white rounded-full btn btn-soft shadow p-2.5 border border-[#64748B]/30" onclick = "deleteJob(${job.id})"><i
                                 class="fa-regular fa-trash-can"></i></button>
                     </div>
 
@@ -75,20 +78,81 @@ function renderJobs() {
 
                     <div class="space-y-2">
 
-                        ${job.status === 'all' ? `<div class="py-2 px-3 bg-[#EEF4FF] inline-block uppercase">not applied</div>` : job.status === 'interview' ? `<div class="border-green-500 text-green-500 bg-green-200 uppercase">interview</div>` : `<div class="border-red-500 text-red-500 bg-red-200 uppercase">rejected</div>`}
+                       <div>
+                            ${job.status === 'all'? `<button class ="color-black px-3 py-2 font-medium bg-[#EEF4FF] rounded uppercase">not applied</button>` : `<span class = "inline-block px-3 py-2 rounded border font-bold uppercase
+                                ${job.status === 'interview' ? 'border-green-500 text-green-500 bg-green-200' :  'border-red-500 text-red-500 bg-red-200'}">
+                                ${job.status}
+                            </span>`}
+                            
+                        </div>
 
-                        <P class="text-[14px] text-[#323B49]">${job.description}</P>
+                        <p class="text-[14px] text-[#323B49]">${job.description}</p>
+
                     </div>
 
                     <div class="flex justify-start items-center gap-2">
-                        <button onclick="updateStatus(${job.id})" class="btn btn-outline btn-success">INTERVIEW</button>
-                        <button onclick="updateStatus(${job.id})" class="btn btn-outline btn-error">REJECTED</button>
+                        <button onclick="updateStatus(${job.id}, 'interview')" class="btn btn-outline btn-success">INTERVIEW</button>
+                        <button onclick="updateStatus(${job.id}, 'rejected')" class="btn btn-outline btn-error">REJECTED</button>
                     </div>
                 </div>`;
 
         JobsContainer.appendChild(jobCard);
     }
-
+    // proti ta job card ghure count update hobe 
+    updateTotalCount();
 };
 
-// 
+//update total count
+function updateTotalCount() {
+    // status-wise jobs er count filter koro 
+    const all = allJobs.length;
+    const interview = allJobs.filter(job => job.status === 'interview').length;
+    const rejected = allJobs.filter(job => job.status === 'rejected').length;
+
+    document.getElementById('total-count').innerText = all;
+    document.getElementById('interview-count').innerText = interview;
+    document.getElementById('rejected-count').innerText = rejected;
+
+    // kon section a kotogula job thakbe shei count - shob gular length count hobe 
+    let availableJobCount;
+    if (currentType == 'all') {
+        availableJobCount = all;
+    }
+    else if (currentType == 'interview') {
+        availableJobCount = interview;
+    }
+    else {
+        availableJobCount = rejected;
+    }
+
+    document.getElementById("available-jobs").innerText = availableJobCount + 'jobs';
+
+    // if availableJobCount 'interview' or 'rejected hoy then' shei job of total jobs boshbe 
+    if (availableJobCount > 0 && (currentType == 'interview' || currentType == 'rejected')) {
+        document.getElementById('available-jobs').innerText = availableJobCount +' '+ 'of' +' '+ all +' '+ 'jobs';
+    }
+}
+
+
+function updateStatus(id, status) {
+    for (let i = 0; i < allJobs.length; i++) {
+        if (allJobs[i].id == id) {
+            allJobs[i].status = status;
+            break;
+        }
+    }
+
+    renderJobs();
+}
+
+
+// id-wise delete hobe
+function deleteJob(id) {
+    // delete hoar por allJobs e update hobe
+
+    // delete kora job er id chara baki id count hobe
+    allJobs = allJobs.filter(job => job.id !== id);
+    renderJobs();
+}
+
+renderJobs();
